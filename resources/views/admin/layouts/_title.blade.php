@@ -1,7 +1,7 @@
 <div class="admin-title">
   <div class="content-title">
     <h2>@yield('table')</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <p>@yield('summary_table')</p>
   </div>
   <div class="button-add-new">
     <a class="btn btn-primary" href="@yield('link')">

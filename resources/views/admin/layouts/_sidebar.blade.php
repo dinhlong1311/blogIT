@@ -2,14 +2,14 @@
   <ul id="sidebar-menu" class="sidebar-menu">
     <li class="sidebar-menu-header">Overview</li>
     <li>
-      <a href="#">
+      <a href="{{route('admin.index')}}">
         <i class="fa fa-tachometer" aria-hidden="true"></i>
         <span>Admin Dashboard</span>
       </a>
     </li>
     <li class="sidebar-menu-header">Member management</li>
     <li>
-      <a href="#">
+      <a href="{{route('role.index')}}">
           <i class="fa fa-briefcase" aria-hidden="true"></i>
         <span>Role</span>
       </a>
