@@ -9,7 +9,14 @@
 $(document).ready(function(){
   // Table
   $('#table-blogIT').DataTable();
-  // input
+  // Check input value
+  $('input').filter(function() {
+    if($(this).val().length > 0) {
+      $(this).next().addClass('active');
+			$(this).prev().addClass('active');
+    }
+  });
+  // Input
   $('input').focus(function(){
 		var valType = $(this).attr('type');
 		var getInput = 'input[type="'+valType+'"]';

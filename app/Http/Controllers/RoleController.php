@@ -40,7 +40,7 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
       $input = $request->all();
-      $this->role->createNewRole($input);
+      $this->role->storeNewRole($input);
       return redirect()->route('role.create')->with('success', 'Đã thêm thành công');
     }
 
@@ -63,7 +63,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+      $role = Role::findOrFail($id);
+      return view('admin.role.edit', compact('role'));
     }
 
     /**
@@ -73,9 +74,11 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-        //
+      $input = $request->input('role');
+      $this->role->updateRole($id, $input);
+      return redirect()->route('role.edit', $id)->with('success', 'Đã cập nhật thành công');
     }
 
     /**
@@ -86,6 +89,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $this->role->destroyRole($id);
+      return redirect()->route('role.index')->with('success', 'Đã xóa thành công');
     }
 }

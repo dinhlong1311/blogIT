@@ -23,9 +23,24 @@ class Role extends Model
   }
 
   // create 1 new role
-  public function createNewRole($input)
+  public function storeNewRole($input)
   {
     $role = $input;
     return self::create($role);
+  }
+
+  // update role
+  public function updateRole($id, $input)
+  {
+    $role = self::find($id);
+    $role->role = $input;
+    $role->save();
+  }
+
+  // destroy role
+  public function destroyRole($id)
+  {
+    $role = self::find($id);
+    $role->delete();
   }
 }

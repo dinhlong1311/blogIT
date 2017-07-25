@@ -1,20 +1,21 @@
 @extends('admin.layouts.index')
-@section('title_admin', 'Tạo mới 1 role')
+@section('title_admin', 'Chỉnh sửa role')
 @section('table', 'roles')
-@section('summary_table', 'Trang tạo mới')
+@section('summary_table', 'Trang chỉnh sửa')
 @section('link')
   {{route('role.create')}}
 @endsection
 
 @section('content')
   <div class="main-content">
-    <h3>Tạo mới 1 role</h3>
-    <form action="{{route('role.store')}}" method="POST">
+    <h3>Chỉnh sửa role id: {{$role->id}}</h3>
+    <form action="{{route('role.update', $role->id)}}" method="POST">
       {{ csrf_field() }}
+      {{ method_field('PUT') }}
       <div class="form-group">
        	<i class="fa fa-briefcase prefix"></i>
-        <input type="text" name="role" value="{{old('role')}}" id="role" class="form-control">
-        <label for="role" class="">Type role name</label>
+        <input type="text" name="role" value="{{$role->role}}" id="role" class="form-control">
+        <label for="role" class="">Edit role name</label>
         @if (count($errors->first('role')))
           <span>{{ $errors->first('role') }}</span>
         @endif

@@ -37,7 +37,8 @@
               </a>
             </td>
             <td class="text-center">
-              <a href="roles/{{$role->id}}" data-method="delete" data-confirm="Are you sure?">
+              <a href="{{route('role.destroy', $role->id)}}" data-method="DELETE"
+                data-token="{{csrf_token()}}" data-confirm="Are you sure?">
                 <i class="fa fa-trash-o delete" aria-hidden="true"></i>
                 Delete
               </a>
