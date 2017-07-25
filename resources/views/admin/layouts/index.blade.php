@@ -8,8 +8,11 @@
       @include('admin.layouts._logo')
       @include('admin.layouts._header')
       @include('admin.layouts._sidebar')
+      @include('admin.layouts._alert')
       <div class="admin-content">
-        @include('admin.layouts._title')
+        <div class="admin-title">
+          @include('admin.layouts._title')
+        </div>
         <div class="admin-main">
           @yield('content')
         </div>

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Role;
+use App\Http\Requests\RoleRequest;
 
 class RoleController extends Controller
 {
+    function __construct(Role $role){
+      $this->role = $role;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +17,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
-        return view('admin.role.index', compact('roles'));
+      $roles = $this->role->getAllRole();
+      return view('admin.role.index', compact('roles'));
     }
 
     /**
@@ -25,7 +28,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.role.create');
     }
 
     /**
@@ -34,9 +37,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //
+      $input = $request->all();
+      $this->role->createNewRole($input);
+      return redirect()->route('role.create')->with('success', 'Đã thêm thành công');
     }
 
     /**

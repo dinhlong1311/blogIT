@@ -2,7 +2,9 @@
 @section('title_admin', 'Danh sách roles')
 @section('table', 'roles')
 @section('summary_table', 'Trang danh sách')
-@section('link', 'roles/create')
+@section('link')
+  {{route('role.create')}}
+@endsection
 
 @section('content')
   <div class="section-content-page">
