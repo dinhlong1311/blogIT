@@ -52,7 +52,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+      $role = $this->role->showRole($id);
+      return view('admin.role.show', compact('role'));
     }
 
     /**

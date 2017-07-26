@@ -29,6 +29,12 @@ class Role extends Model
     return self::create($role);
   }
 
+  // show role
+  public function showRole($id)
+  {
+    return self::findOrFail($id);
+  }
+
   // update role
   public function updateRole($id, $input)
   {

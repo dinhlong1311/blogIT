@@ -28,8 +28,8 @@
       <tbody>
         @foreach ($roles as $role)
           <tr>
-            <td><a href="roles/{{$role->id}}">{{$role->id}}</a></td>
-            <td><a href="roles/{{$role->id}}">{{$role->role}}</a></td>
+            <td><a href="{{route('role.show', $role->id)}}">{{$role->id}}</a></td>
+            <td><a href="{{route('role.show', $role->id)}}">{{$role->role}}</a></td>
             <td class="text-center">
               <a href="roles/{{$role->id}}/edit">
                 <i class="fa fa-pencil-square-o edit" aria-hidden="true"></i>
