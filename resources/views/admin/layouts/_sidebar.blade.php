@@ -27,7 +27,7 @@
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="{{route('user.index')}}">
         <i class="fa fa-user" aria-hidden="true"></i>
         <span>User</span>
       </a>

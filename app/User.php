@@ -32,4 +32,10 @@ class User extends Authenticatable
     {
       return $this->belongsTo('App\Role', 'role_id', 'id');
     }
+
+    // get all user
+    public function getAllUser()
+    {
+      return self::where('role_id', 1)->get();
+    }
 }
