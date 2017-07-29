@@ -27,6 +27,26 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $table = 'users';
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at'];
+
+    /**
+     * Set the user's password.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPasswordAttribute($value)
+    {
+      $this->attributes['password'] = bcrypt($value);
+    }
+
     // relationship: roles table
     public function role()
     {
@@ -37,5 +57,12 @@ class User extends Authenticatable
     public function getAllUser()
     {
       return self::where('role_id', 1)->get();
+    }
+
+    // create 1 new role
+    public function storeNewUser($input)
+    {
+      $role = $input;
+      return self::create($role);
     }
 }

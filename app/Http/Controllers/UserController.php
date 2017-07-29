@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -28,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.user.create');
     }
 
     /**
@@ -37,9 +38,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+      $input = $request->all();
+      $this->user->storeNewUser($input);
+      return redirect()->route('user.create')->with('success', 'Đã thêm thành công');
     }
 
     /**
